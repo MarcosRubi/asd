@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+.p-dialog {
+  overflow-y: auto;
+  &-header {
+    background: linear-gradient(
+      90deg,
+      rgba(26, 29, 83, 1) 0%,
+      rgba(9, 9, 121, 1) 30%,
+      rgba(22, 163, 74, 1) 100%
+    );
+    padding: 3rem 2rem;
+    color: white;
+    svg {
+      stroke: white;
+    }
+  }
+  &-content {
+    overflow-y: visible;
+    .profile-img {
+      transform: translateY(-3rem);
+      padding: 0.75rem;
+      background: white;
+      border-radius: 50%;
+      img {
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border: 4px solid green;
+      }
+    }
+  }
+}
+.p-fileupload-buttonbar {
+  min-width: 400px;
+  display: flex;
+  justify-content: center;
+  .p-element:not(:first-child) {
+    display: none;
+  }
+}

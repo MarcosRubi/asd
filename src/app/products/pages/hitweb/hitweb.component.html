@@ -1,0 +1,143 @@
+<main class="grid">
+  <!-- SECCION MENU LATERAL -->
+  <aside class="col-3 bg-indigo-900 min-h-screen">
+    <div class="grid align-items-center min-h-full">
+      <div class="row mx-auto text-white text-center">
+        <p>ESPACIO MENU LATERAL</p>
+        <div class=" card flex justify-content-center">
+          <p-button (click)="showDialog()" icon="pi pi-external-link" label="Abir modal del tutor"></p-button>
+          <p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '80vw' }" [draggable]="false"
+            [resizable]="false">
+            <header class="flex flex-wrap justify-content-center">
+              <div class="profile-img">
+                <img src="https://thispersondoesnotexist.com/" alt="Profile image" class="border-circle max-w-16rem ">
+              </div>
+              <div class="content text-left md:mt-1">
+                <h2 class="uppercase text-4xl md:text-7xl m-0 font-bold">Marcos Rubí</h2>
+                <span class="uppercase text-2xl md:text-4xl text-gray-600">Mathematics Tutor</span>
+              </div>
+            </header>
+            <section class="about text-left font-bold max-w-1200 mx-auto">
+              <div class="flex flex-column md:flex-row justify-content-between align-items-center py-5">
+                <h3 class="md:flex-1">Email</h3>
+                <p class="md:flex-1 text-pretty">johnDoe@example.com</p>
+              </div>
+              <span class="block w-full border-bottom-2 border-black-alpha-10 surface-overlay "></span>
+              <div class="flex flex-column md:flex-row justify-content-between align-items-center py-5">
+                <h3 class="md:flex-1">About Me</h3>
+                <p class="md:flex-1 text-pretty">Hello! I'm Marcos Rubí, a passionate math tutor dedicated to making
+                  complex concepts
+                  easy to understand. With 12 years
+                  of teaching experience, I'm here to guide you through algebra, geometry, or calculus, making learning
+                  enjoyable and
+                  accessible. Let's explore the fascinating world of math together and conquer any challenges along the
+                  way!</p>
+              </div>
+            </section>
+          </p-dialog>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <!-- FIN SECCION MENU LATERAL -->
+
+  <!-- SECCION CONFIGURACION DE CUENTA -->
+  <section class="col pl-6 my-5">
+    <h1 class="text-5xl">Account Setting</h1>
+    <!-- MENU INTERNO -->
+    <p-tabView>
+      <p-tabPanel header="My Profile">
+        <section>
+          <!-- SECCION DE FOTO -->
+          <article class="flex flex-wrap gap-2 justify-content-between align-items-center my-5">
+            <div>
+              <p class="font-bold text-xl m-0">Your photo</p>
+              <span>This will be displayed on your profile.</span>
+            </div>
+            <div>
+              <div class="flex flex-wrap align-items-center">
+                <div class="profile-img mx-auto md:mx-0">
+                  <img src="https://thispersondoesnotexist.com/" alt="Tutor image profile"
+                    class="border-circle max-w-10rem px-2" />
+                </div>
+                <div class="card flex justify-content-center">
+                  <p-toast></p-toast>
+                  <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
+                    (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" chooseLabel="Click to upload">
+                    <ng-template pTemplate="content">
+                      <div class="text-center">
+                        <span class="block font-bold">Or drag and drop</span>
+                        <span class="block text-gray-400 text-sm">SVG, PNG, JPG or GIF (max. 800x400px)</span>
+                      </div>
+                      <ul *ngIf="uploadedFiles.length">
+                        <li *ngFor="let file of uploadedFiles">
+                          {{ file.name }} - {{ file.size }} bytes
+                        </li>
+                      </ul>
+                    </ng-template>
+                  </p-fileUpload>
+                </div>
+              </div>
+            </div>
+          </article>
+          <hr class="block w-full border-bottom-2 border-black-alpha-10 surface-overlay" />
+          <!-- FIN SECCION DE FOTO -->
+
+          <!-- SECCION FORM -->
+          <article>
+            <form action="#">
+              <div class="input-group flex flex-column md:flex-row md:align-items-center justify-content-between">
+                <label for="name" class="font-bold flex-1">Name</label>
+                <div class="flex flex-column xl:flex-row align-items-center gap-5 flex-1">
+                  <input type="text" name="name" id="name" pInputText placeholder="John" class="w-full" />
+                  <input type="text" name="lastname" id="lastname" pInputText placeholder="Doe" class="w-full" />
+                </div>
+              </div>
+              <span class="block w-full border-bottom-2 border-black-alpha-10 surface-overlay "></span>
+              <div class="input-group flex flex-column md:flex-row md:align-items-center justify-content-between">
+                <label for="email" class="font-bold flex-1">Email</label>
+                <div class="flex align-items-center gap-5 flex-1">
+                  <input type="email" name="email" id="email" pInputText placeholder="johnDoe@example.com"
+                    class="w-full" />
+                </div>
+              </div>
+              <!-- NUMERO DE TELÉNO -->
+              <!-- <span class="block w-full border-bottom-2 border-black-alpha-10 surface-overlay "></span>
+              <div class="input-group flex flex-column md:flex-row md:align-items-center justify-content-between">
+                <label for="phone" class="font-bold flex-1">Phone</label>
+                <div class="flex align-items-center gap-5 flex-1">
+                  <input type="text" name="phone" id="phone" pInputText placeholder="+1 516 123 4567" class="w-full" />
+                </div>
+              </div> -->
+              <span class="block w-full border-bottom-2 border-black-alpha-10 surface-overlay "></span>
+              <div class="input-group flex flex-column md:flex-row md:align-items-center justify-content-between">
+                <label for="bio" class="flex-1">
+                  <span class="font-bold block ">Bio</span>
+                  <span>White a short introduction.</span>
+                </label>
+                <div class="flex align-items-center gap-5 flex-1">
+                  <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" class="w-full" id="bio" name="bio"
+                    placeholder="Briefly introduce yourself and your passions."></textarea>
+                </div>
+              </div>
+              <span class="block w-full border-bottom-2 border-black-alpha-10 surface-overlay "></span>
+              <div class="input-group flex justify-content-end gap-2">
+                <p-button label="Cancel" [outlined]="true" severity="secondary"></p-button>
+                <p-button label="Update" [loading]="loading" (onClick)="load()"></p-button>
+              </div>
+            </form>
+          </article>
+          <!-- FIN SECCION FORM -->
+        </section>
+      </p-tabPanel>
+      <p-tabPanel header="Security">
+        <ng-template pTemplate="content"> Componente de Contraseña </ng-template>
+      </p-tabPanel>
+    </p-tabView>
+    <!-- FIN MENU INTERNO -->
+
+
+  </section>
+  <!-- FIN SECCION CONFIGURACION DE CUENTA -->
+
+</main>
