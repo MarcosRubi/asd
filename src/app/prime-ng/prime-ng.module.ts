@@ -12,6 +12,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DialogModule } from 'primeng/dialog';
 import { TabViewModule } from 'primeng/tabview';
+import { ImageModule } from 'primeng/image';
 
 @NgModule({
   exports: [
@@ -28,6 +29,7 @@ import { TabViewModule } from 'primeng/tabview';
     InputTextareaModule,
     DialogModule,
     TabViewModule,
+    ImageModule,
   ],
 })
 export class PrimeNgModule {}

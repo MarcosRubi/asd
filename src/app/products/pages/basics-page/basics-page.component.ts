@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
 
+import localeEsHN from '@angular/common/locales/es-HN';
+import localeEsFrCA from '@angular/common/locales/fr-CA';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeEsHN);
+registerLocaleData(localeEsFrCA);
+
 @Component({
   selector: 'app-basics-page',
   templateUrl: './basics-page.component.html',

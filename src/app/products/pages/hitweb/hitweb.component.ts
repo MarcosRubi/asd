@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 
-interface UploadEvent {
-  originalEvent: Event;
-  files: File[];
-}
-
 @Component({
   selector: 'hitweb',
   templateUrl: './hitweb.component.html',
@@ -13,7 +8,7 @@ interface UploadEvent {
   providers: [MessageService],
 })
 export class HitwebComponent {
-  uploadedFiles: any[] = [];
+  public image!: string;
   loading: boolean = false;
   visible: boolean = false;
 
@@ -31,17 +26,16 @@ export class HitwebComponent {
     this.visible = true;
   }
 
-  //Aquí sería la interface de UploadEvent, pero me da error.
-  //URL del componente, es el último https://primeng.org/fileupload
-  onUpload(event: any) {
-    for (let file of event.files) {
-      this.uploadedFiles.push(file);
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const base64String = e.target.result;
+        console.log(base64String);
+        this.image = base64String;
+      };
+      reader.readAsDataURL(file);
     }
-
-    this.messageService.add({
-      severity: 'info',
-      summary: 'File Uploaded',
-      detail: '',
-    });
   }
 }

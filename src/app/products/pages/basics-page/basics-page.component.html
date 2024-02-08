@@ -54,12 +54,14 @@
       <div class="flex flex-wrap mx-auto gap-4">
         <ol class="md:flex-1">
           <li>Fecha | date:'long':'GMT-6'</li>
-          <li>Fecha | date:'long':'GMT-4'</li>
+          <li>Fecha | date:'long':'GMT-4':'es-HN'</li>
+          <li>Fecha | date:'long':'GMT-4':'fr-CA'</li>
         </ol>
 
         <ol class="md:flex-1">
           <li>{{ customDate | date : "long" : "GMT-6" }}</li>
-          <li>{{ customDate | date : "long" : "GMT-4" }}</li>
+          <li>{{ customDate | date : "long" : "": 'es-HN' }}</li>
+          <li>{{ customDate | date : "long" : "": 'fr-CA' }}</li>
         </ol>
       </div>
     </p-card>

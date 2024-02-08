@@ -42,7 +42,7 @@
   <!-- FIN SECCION MENU LATERAL -->
 
   <!-- SECCION CONFIGURACION DE CUENTA -->
-  <section class="col pl-6 my-5">
+  <section class="col pl-6 mt-0">
     <h1 class="text-5xl">Account Setting</h1>
     <!-- MENU INTERNO -->
     <p-tabView>
@@ -54,28 +54,22 @@
               <p class="font-bold text-xl m-0">Your photo</p>
               <span>This will be displayed on your profile.</span>
             </div>
-            <div>
+            <div class="flex-basis-60">
               <div class="flex flex-wrap align-items-center">
                 <div class="profile-img mx-auto md:mx-0">
-                  <img src="https://thispersondoesnotexist.com/" alt="Tutor image profile"
-                    class="border-circle max-w-10rem px-2" />
+                  <p-image [src]="!image ? 'https://thispersondoesnotexist.com/' : image" alt="Image"
+                    width="250"></p-image>
                 </div>
-                <div class="card flex justify-content-center">
-                  <p-toast></p-toast>
-                  <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
-                    (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" chooseLabel="Click to upload">
-                    <ng-template pTemplate="content">
-                      <div class="text-center">
-                        <span class="block font-bold">Or drag and drop</span>
-                        <span class="block text-gray-400 text-sm">SVG, PNG, JPG or GIF (max. 800x400px)</span>
-                      </div>
-                      <ul *ngIf="uploadedFiles.length">
-                        <li *ngFor="let file of uploadedFiles">
-                          {{ file.name }} - {{ file.size }} bytes
-                        </li>
-                      </ul>
-                    </ng-template>
-                  </p-fileUpload>
+                <div class="card flex justify-content-center ml-6">
+                  <div class="button-wrapper">
+                    <label class="label p-button" for="upload">
+                      Upload File
+                    </label>
+
+                    <input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload Image"
+                      accept="image/*" (change)="onFileSelected($event)">
+
+                  </div>
                 </div>
               </div>
             </div>

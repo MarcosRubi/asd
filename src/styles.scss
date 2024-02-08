@@ -30,11 +30,41 @@
     }
   }
 }
-.p-fileupload-buttonbar {
-  min-width: 400px;
-  display: flex;
-  justify-content: center;
-  .p-element:not(:first-child) {
-    display: none;
+.profile-img {
+  img {
+    border-radius: 50%;
+    max-width: 10rem;
   }
+}
+.flex-basis-60 {
+  flex-basis: 60%;
+}
+
+.button-wrapper {
+  position: relative;
+  width: 8rem;
+  text-align: center;
+  margin: 20% auto;
+}
+
+.button-wrapper span.label {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+#upload {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 50px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
 }
